@@ -5,24 +5,15 @@ nltk.download('averaged_perceptron_tagger')
 from nltk import word_tokenize,sent_tokenize,pos_tag
 from yolo_object_detection import ImageCheck
 
+#getting the set of objects detected
 i= ImageCheck()
 objects=i.checkPool()
 for s in objects:
     print(s)
 
-# objects= set()
-# objects.add("car")
-# objects.add("pool")
-# objects.add("bed")
+isContinue='y'
 
-for s in objects:
-    print(s)
-
-i='y'
-while i == 'y':
-
-    # sentences = nltk.sent_tokenize("Is there a bed in the room?")
-
+while isContinue == 'y':
     query = input("question: ") 
     sentences = nltk.sent_tokenize(query)
     nouns = []
@@ -40,4 +31,4 @@ while i == 'y':
         if noun in objects: 
             response = "Yes"
     print(response)
-    i=input("continue? ")
+    isContinue=input("continue? ")
