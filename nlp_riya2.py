@@ -4,6 +4,7 @@ import random
 from nltk.chat.util import Chat, reflections
 from yolo_object_detection import ImageCheck
 
+#fetching set of objects from image detection
 i= ImageCheck()
 objects=i.checkPool()
 for s in objects:
@@ -20,13 +21,8 @@ for s in objects:
 class MyChat(Chat):
 
     def respond(self, str):
-        """
-        Generate a response to the user input.
-
-        :type str: str
-        :param str: The string to be mapped
-        :rtype: str
-        """
+       
+        # overridinng the respond function with 
         # riya's code for sentence noun detection
         sentences = nltk.sent_tokenize(str)
         nouns = []
@@ -40,7 +36,6 @@ class MyChat(Chat):
         for noun in nouns:
             if noun in objects: 
                 response = "Yes"
-
         return response
 
         # check each pattern
@@ -66,7 +61,6 @@ class MyChat(Chat):
 
 pairs = [
         ['(.*)', ['%1']]
-    #  ['is there a pool', [isThere('pool')]],
 
 ]
 
